@@ -31,7 +31,7 @@
 					]
 				},
 				{
-					"name": "SearchIntent",
+					"name": "SearchMovieIntent",
 					"slots": [
 						{
 							"name": "Movie",
@@ -45,7 +45,18 @@
 					"samples": [
 						"tell me about {Movie}",
 						"what's {Movie} about",
-						"what is {Movie} about",
+						"what is {Movie} about"
+					]
+				},
+				{
+					"name": "SearchActorIntent",
+					"slots": [
+						{
+							"name": "Actor",
+							"type": "AMAZON.Actor"
+						}
+					],
+					"samples": [
 						"what movie was {Actor} in",
 						"who is {Actor}",
 						"what has {Actor} been in",

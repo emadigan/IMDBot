@@ -7,6 +7,7 @@ from ask_sdk_core.skill_builder import SkillBuilder
 
 import pymysql
 import top200
+from imdb import IMdB
 
 sb = SkillBuilder()
 
@@ -32,14 +33,28 @@ class TopIMDBIntentHandler(AbstractRequestHandler):
             SimpleCard("Hello World", speech_text)).set_should_end_session(True)
         return handler_input.response_builder.response
 
-class SearchIntentHandler(AbstractRequestHandler):
+class SearchMovieIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         return is_intent_name("SearchIntent")(handler_input)
 
     def handle(self, handler_input):
-        speech_text = top200.random_movie()
+        slots = handler_input.request_envelope.request.intents.slots
+        movie = slots['Movie']
+        speech_text = "You asked about {0}".format(movie.value)
         handler_input.response_builder.speak(speech_text).set_card(
             SimpleCard("Hello World", speech_text)).set_should_end_session(True)
+        return handler_input.response_builder.response
+
+class SearchActorIntentHandler(AbstractRequestHandler):
+    def can_handle(self, handler_input):
+        return is_intent_name("SearchIntent")(handler_input)
+
+    def handle(self, handler_input):
+        slots = handler_input.request_envelope.request.intents.slots
+        movie = slots['Actor']
+        speech_text = "You asked about {0}".format(actor.value)
+        handler_input.response_builder.speak(speech_text).set_card(
+                SimpleCard("Hello World", speech_text)).set_should_end_session(True)
         return handler_input.response_builder.response
 
 class CancelAndStopIntentHandler(AbstractRequestHandler):
@@ -76,6 +91,7 @@ sb.add_request_handler(CancelAndStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_request_handler(TopIMDBIntentHandler())
 sb.add_exception_handler(AllExceptionHandler())
-sb.add_exception_handler(SearchIntentHandler())
+sb.add_request_handler(SearchMovieIntentHandler())
+sb.add_request_handler(SearchActorIntentHandler())
 
 handler = sb.lambda_handler()
