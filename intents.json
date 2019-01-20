@@ -20,10 +20,11 @@
 					"samples": []
 				},
 				{
-					"name": "RandomMovieIntent",
+					"name": "TopIMDBIntent",
 					"slots": [],
 					"samples": [
-						"pick a movie from my list",
+						"pick a movie",
+						"suggest a movie",
 						"pick a random movie",
 						"choose a movie",
 						"give me a movie"
