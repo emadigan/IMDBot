@@ -1,0 +1,58 @@
+{
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "imdbot",
+			"intents": [
+				{
+					"name": "AMAZON.FallbackIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": []
+				},
+				{
+					"name": "RandomMovieIntent",
+					"slots": [],
+					"samples": [
+						"pick a movie from my list",
+						"pick a random movie",
+						"choose a movie",
+						"give me a movie"
+					]
+				},
+				{
+					"name": "SearchIntent",
+					"slots": [
+						{
+							"name": "Movie",
+							"type": "AMAZON.Movie"
+						},
+						{
+							"name": "Actor",
+							"type": "AMAZON.Actor"
+						}
+					],
+					"samples": [
+						"tell me about {Movie}",
+						"what's {Movie} about",
+						"what is {Movie} about",
+						"what movie was {Actor} in",
+						"who is {Actor}",
+						"what has {Actor} been in",
+						"what movies has {Actor} been in"
+					]
+				}
+			],
+			"types": []
+		}
+	}
+}
